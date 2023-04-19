@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Parse staged files
+staged=$(git diff --cached --name-only | tr '\n' ' ')
+
+# Only run if any css/scss files have changed
+if [[ $staged =~ \.s?css ]]; then
+    npm run scss-parse
+    git add src/styles/*
+fi
+
+# Parse staged files again, in case resulting css was added
+staged=$(git diff --cached --name-only | tr '\n' ' ')
+
+# Format all files
+npm run prettier
+
+# Re-add all files modified during pre-commit
+git add $staged

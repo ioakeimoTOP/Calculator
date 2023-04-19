@@ -1,0 +1,10 @@
+# Config files
+.eslintrc.js
+postcss.config.js
+
+# Node modules
+node_modules/
+
+# GitHub files
+README.md
+LICENSE

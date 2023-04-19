@@ -1,0 +1,36 @@
+{
+  "name": "barebones-project-template",
+  "version": "1.0.0",
+  "description": "A project template for web with the absolute basics set up.",
+  "main": "index.js",
+  "scripts": {
+    "scss-parse": "postcss src/styles/main.scss --parser postcss-scss --no-map --use postcss-advanced-variables postcss-nested postcss-import autoprefixer --output src/styles/main.css",
+    "scss-parse:watch": "postcss src/styles/main.scss --parser postcss-scss --no-map --use postcss-advanced-variables postcss-nested postcss-import autoprefixer --output src/styles/main.css --watch",
+    "prettier": "npx prettier --write .",
+    "test": "jest",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "template"
+  ],
+  "author": "ioakeimo",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "jest": "^29.5.0",
+    "postcss": "^8.4.21",
+    "postcss-advanced-variables": "^3.0.1",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-nested": "^6.0.1",
+    "postcss-scss": "^4.0.6",
+    "prettier": "^2.8.7",
+    "husky": "^8.0.0"
+  },
+  "browserslist": [
+    "defaults and supports es6-module",
+    "maintained node versions"
+  ]
+}
