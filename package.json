@@ -1,7 +1,7 @@
 {
-  "name": "barebones-project-template",
+  "name": "Calculator",
   "version": "1.0.0",
-  "description": "A project template for web with the absolute basics set up.",
+  "description": "A minimal calculator built with vanilla JS and css grid.",
   "main": "index.js",
   "scripts": {
     "scss-parse": "postcss src/styles/main.scss --parser postcss-scss --no-map --use postcss-advanced-variables postcss-nested postcss-import autoprefixer --output src/styles/main.css",
@@ -11,7 +11,9 @@
     "prepare": "husky install"
   },
   "keywords": [
-    "template"
+    "calculator",
+    "css-grid",
+    "JavaScript"
   ],
   "author": "ioakeimo",
   "license": "MIT",

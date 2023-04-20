@@ -1,8 +1,4 @@
-# Project-Template
+# Calculator
 
-A project template for web, with:
-
-- Postcss with sass support and autoprefixer
-- prettier configured
-- husky with pre-commit formatting
-- basic dark mode toggle functionality
+A minimal calculator built with vanilla JS and css grid.
+Live demo: [Calculator](https://ioakeimotop.github.io/Calculator/)
