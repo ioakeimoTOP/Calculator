@@ -1,0 +1,74 @@
+@mixin subgrid {
+  display: grid;
+  place-items: center;
+  gap: var(--gap);
+}
+
+.calculator {
+  font-size: clamp(1rem, 2.5vmin, 1.5rem);
+  --gap: 0.5em;
+  --border-radius: 1em;
+  font-weight: bold;
+
+  width: min(600px, 80%);
+  height: min-content;
+  padding: var(--gap);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 1em 0.05em var(--text);
+
+  display: grid;
+  gap: var(--gap);
+  grid-template-areas:
+    'screen screen screen screen    screen'
+    'numpad numpad numpad operators operators'
+    'numpad numpad numpad operators operators'
+    'numpad numpad numpad operators operators'
+    'numpad numpad numpad operators operators';
+
+  & > * {
+    padding: var(--gap);
+    border-radius: 1rem;
+  }
+
+  &__screen {
+    font-size: 2em;
+    grid-area: screen;
+    background: var(--accent-1);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__numpad {
+    background: coral;
+    grid-area: numpad;
+
+    @include subgrid();
+    grid-template: repeat(4, min-content) / repeat(3, 1fr);
+  }
+
+  &__operators {
+    background: orange;
+    grid-area: operators;
+
+    @include subgrid();
+    grid-template: repeat(4, min-content) / repeat(2, 1fr);
+  }
+
+  &__item {
+    aspect-ratio: 1/1;
+    width: 90%;
+    border-radius: 25rem;
+
+    &-double {
+      aspect-ratio: 2/1;
+      grid-column: span 2;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      filter: brightness(115%);
+    }
+  }
+}

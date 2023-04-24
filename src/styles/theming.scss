@@ -9,6 +9,7 @@
   --brand: hsl(var(--brand-hue) 80% 45%);
 
   --text: var(--brand-black);
+  --text-inverse: var(--brand-white);
 
   --accent-saturation: 45%;
   --accent-1: hsl(var(--brand-hue) var(--accent-saturation) 75%);
@@ -23,6 +24,7 @@
   --brand: hsl(var(--brand-hue) 80% 40%);
 
   --text: var(--brand-white);
+  --text-inverse: var(--brand-black);
 
   --accent-saturation: 25%;
   --accent-1: hsl(var(--brand-hue) var(--accent-saturation) 20%);
@@ -46,13 +48,16 @@
 #theme-toggle {
   appearance: none;
   outline: none;
-  position: relative;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   width: 4rem;
   height: 2rem;
   border-radius: 1rem;
   border: 4px solid var(--accent-4);
   cursor: pointer;
   background: hsl(210, 100%, 85%);
+
   /* Toggle Indicator */
   &::after {
     content: '';
