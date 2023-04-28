@@ -20,9 +20,13 @@
       <section class="calculator">
         <div class="calculator__screen">0</div>
         <div class="calculator__mutators">
-          <button class="calculator__item">C</button>
-          <button class="calculator__item">del</button>
-          <button class="calculator__item">+/-</button>
+          <button class="calculator__item" data-mutation="clear">C</button>
+          <button class="calculator__item" data-mutation="del">
+            &leftarrow;
+          </button>
+          <button class="calculator__item" data-mutation="sign">
+            &plusmn;
+          </button>
         </div>
         <div class="calculator__numpad">
           <button class="calculator__item">7</button>
@@ -35,14 +39,14 @@
           <button class="calculator__item">2</button>
           <button class="calculator__item">3</button>
           <button class="calculator__item calculator__item-double">0</button>
-          <button id="dot" class="calculator__item">.</button>
+          <button id="dot" class="calculator__item">&sdot;</button>
         </div>
         <div class="calculator__operators">
-          <button class="calculator__item">/</button>
-          <button class="calculator__item">*</button>
-          <button class="calculator__item">+</button>
-          <button class="calculator__item">-</button>
-          <button class="calculator__item">=</button>
+          <button class="calculator__item" data-operation="/">&divide;</button>
+          <button class="calculator__item" data-operation="*">&times;</button>
+          <button class="calculator__item" data-operation="+">&plus;</button>
+          <button class="calculator__item" data-operation="-">&minus;</button>
+          <button class="calculator__item" data-operation="=">&equals;</button>
         </div>
       </section>
     </main>
