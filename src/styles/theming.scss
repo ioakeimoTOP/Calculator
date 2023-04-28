@@ -3,6 +3,8 @@
   --brand-hue: 220;
   --brand-white: hsl(var(--brand-hue) 100% 95%);
   --brand-black: hsl(var(--brand-hue) 100% 10%);
+
+  --accent-shadow: hsla(var(--brand-hue), 100%, 20%, 0.25);
 }
 
 .light {
@@ -11,13 +13,24 @@
   --text: var(--brand-black);
   --text-inverse: var(--brand-white);
 
-  --accent-saturation: 45%;
-  --accent-1: hsl(var(--brand-hue) var(--accent-saturation) 75%);
-  --accent-2: hsl(var(--brand-hue) var(--accent-saturation) 80%);
-  --accent-3: hsl(var(--brand-hue) var(--accent-saturation) 85%);
-  --accent-4: hsl(var(--brand-hue) var(--accent-saturation) 90%);
+  --accent-saturation: 50%;
+  --alpha: 0.6;
 
-  --accent-shadow: hsla(var(--brand-hue), 100%, 20%, 0.25);
+  --accent-surface: hsla(
+    var(--brand-hue),
+    var(--accent-saturation),
+    85%,
+    var(--alpha)
+  );
+  --accent-screen: hsla(var(--brand-hue), var(--accent-saturation), 15%, 0.85);
+  --accent-numpad: hsla(
+    var(--brand-hue),
+    var(--accent-saturation),
+    65%,
+    var(--alpha)
+  );
+  --accent-mutator: hsla(348, var(--accent-saturation), 45%, var(--alpha));
+  --accent-operator: hsla(16, 100%, 65%, var(--alpha));
 }
 
 @mixin dark {
@@ -27,12 +40,23 @@
   --text-inverse: var(--brand-black);
 
   --accent-saturation: 25%;
-  --accent-1: hsl(var(--brand-hue) var(--accent-saturation) 20%);
-  --accent-2: hsl(var(--brand-hue) var(--accent-saturation) 25%);
-  --accent-3: hsl(var(--brand-hue) var(--accent-saturation) 30%);
-  --accent-4: hsl(var(--brand-hue) var(--accent-saturation) 35%);
+  --alpha: 0.4;
 
-  --accent-shadow: hsla(var(--brand-hue), 100%, 20%, 0.25);
+  --accent-surface: hsla(var(--brand-hue), var(--accent-saturation), 85%, 0.25);
+  --accent-screen: hsla(
+    var(--brand-hue),
+    var(--accent-saturation),
+    95%,
+    var(--alpha)
+  );
+  --accent-numpad: hsla(
+    var(--brand-hue),
+    var(--accent-saturation),
+    65%,
+    var(--alpha)
+  );
+  --accent-mutator: hsla(348, var(--accent-saturation), 45%, var(--alpha));
+  --accent-operator: hsla(16, 100%, 65%, var(--alpha));
 }
 
 .dark {

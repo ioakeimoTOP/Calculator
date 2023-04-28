@@ -42,6 +42,8 @@ h6 {
   --brand-hue: 220;
   --brand-white: hsl(var(--brand-hue) 100% 95%);
   --brand-black: hsl(var(--brand-hue) 100% 10%);
+
+  --accent-shadow: hsla(var(--brand-hue), 100%, 20%, 0.25);
 }
 
 .light {
@@ -50,13 +52,24 @@ h6 {
   --text: var(--brand-black);
   --text-inverse: var(--brand-white);
 
-  --accent-saturation: 45%;
-  --accent-1: hsl(var(--brand-hue) var(--accent-saturation) 75%);
-  --accent-2: hsl(var(--brand-hue) var(--accent-saturation) 80%);
-  --accent-3: hsl(var(--brand-hue) var(--accent-saturation) 85%);
-  --accent-4: hsl(var(--brand-hue) var(--accent-saturation) 90%);
+  --accent-saturation: 50%;
+  --alpha: 0.6;
 
-  --accent-shadow: hsla(var(--brand-hue), 100%, 20%, 0.25);
+  --accent-surface: hsla(
+    var(--brand-hue),
+    var(--accent-saturation),
+    85%,
+    var(--alpha)
+  );
+  --accent-screen: hsla(var(--brand-hue), var(--accent-saturation), 15%, 0.85);
+  --accent-numpad: hsla(
+    var(--brand-hue),
+    var(--accent-saturation),
+    65%,
+    var(--alpha)
+  );
+  --accent-mutator: hsla(348, var(--accent-saturation), 45%, var(--alpha));
+  --accent-operator: hsla(16, 100%, 65%, var(--alpha));
 }
 
 .dark {
@@ -66,12 +79,23 @@ h6 {
   --text-inverse: var(--brand-black);
 
   --accent-saturation: 25%;
-  --accent-1: hsl(var(--brand-hue) var(--accent-saturation) 20%);
-  --accent-2: hsl(var(--brand-hue) var(--accent-saturation) 25%);
-  --accent-3: hsl(var(--brand-hue) var(--accent-saturation) 30%);
-  --accent-4: hsl(var(--brand-hue) var(--accent-saturation) 35%);
+  --alpha: 0.4;
 
-  --accent-shadow: hsla(var(--brand-hue), 100%, 20%, 0.25);
+  --accent-surface: hsla(var(--brand-hue), var(--accent-saturation), 85%, 0.25);
+  --accent-screen: hsla(
+    var(--brand-hue),
+    var(--accent-saturation),
+    95%,
+    var(--alpha)
+  );
+  --accent-numpad: hsla(
+    var(--brand-hue),
+    var(--accent-saturation),
+    65%,
+    var(--alpha)
+  );
+  --accent-mutator: hsla(348, var(--accent-saturation), 45%, var(--alpha));
+  --accent-operator: hsla(16, 100%, 65%, var(--alpha));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,12 +106,28 @@ h6 {
     --text-inverse: var(--brand-black);
 
     --accent-saturation: 25%;
-    --accent-1: hsl(var(--brand-hue) var(--accent-saturation) 20%);
-    --accent-2: hsl(var(--brand-hue) var(--accent-saturation) 25%);
-    --accent-3: hsl(var(--brand-hue) var(--accent-saturation) 30%);
-    --accent-4: hsl(var(--brand-hue) var(--accent-saturation) 35%);
+    --alpha: 0.4;
 
-    --accent-shadow: hsla(var(--brand-hue), 100%, 20%, 0.25);
+    --accent-surface: hsla(
+      var(--brand-hue),
+      var(--accent-saturation),
+      85%,
+      0.25
+    );
+    --accent-screen: hsla(
+      var(--brand-hue),
+      var(--accent-saturation),
+      95%,
+      var(--alpha)
+    );
+    --accent-numpad: hsla(
+      var(--brand-hue),
+      var(--accent-saturation),
+      65%,
+      var(--alpha)
+    );
+    --accent-mutator: hsla(348, var(--accent-saturation), 45%, var(--alpha));
+    --accent-operator: hsla(16, 100%, 65%, var(--alpha));
   }
 }
 
@@ -189,106 +229,90 @@ footer {
   font-weight: bold;
 }
 
-.surface {
-  padding: 2em 4em;
-  background: var(--accent-1);
-  box-shadow: 0 0 0.25rem var(--accent-shadow);
-  border-radius: 1rem;
-  color: var(--text);
-}
-
-.surface > .elevation {
-  padding: 2em 4em;
-  box-shadow: 0 0 0.5rem 0.1rem var(--accent-shadow);
-  border-radius: inherit;
-  background: var(--accent-2);
-}
-
-.surface > .elevation > .elevation {
-  padding: 2em 4em;
-  box-shadow: 0 0 0.5rem 0.1rem var(--accent-shadow);
-  border-radius: inherit;
-  background: var(--accent-3);
-}
-
-.surface > .elevation > .elevation > .elevation {
-  padding: 2em 4em;
-  box-shadow: 0 0 0.5rem 0.1rem var(--accent-shadow);
-  border-radius: inherit;
-  background: var(--accent-4);
-}
-
-p {
-  padding: 0.5rem 1rem;
-}
-
 .calculator {
-  font-size: clamp(1rem, 2.5vmin, 1.5rem);
+  font-size: clamp(1rem, 5vmin, 1.75rem);
+  font-weight: bold;
+
   --gap: 0.5em;
   --border-radius: 1em;
-  font-weight: bold;
 
   width: min(600px, 80%);
   height: min-content;
   padding: var(--gap);
   border-radius: var(--border-radius);
   box-shadow: 0 0 1em 0.05em var(--text);
+  background: var(--accent-surface);
 
   display: grid;
   gap: var(--gap);
   grid-template-areas:
-    'screen screen screen screen    screen'
-    'numpad numpad numpad operators operators'
-    'numpad numpad numpad operators operators'
-    'numpad numpad numpad operators operators'
-    'numpad numpad numpad operators operators';
+    'screen screen screen screen'
+    'mut    mut    mut    operators'
+    'numpad numpad numpad operators'
+    'numpad numpad numpad operators'
+    'numpad numpad numpad operators'
+    'numpad numpad numpad operators';
+  grid-template-rows: repeat(6, minmax(10vh, 1fr));
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .calculator > * {
-  padding: var(--gap);
   border-radius: 1rem;
 }
 
 .calculator__screen {
   font-size: 2em;
-  grid-area: screen;
-  background: var(--accent-1);
+  color: var(--text-inverse);
+  background: var(--accent-screen);
+  padding: 0.25em;
 
+  grid-area: screen;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
+.calculator__mutators {
+  --bg: var(--accent-mutator);
+  grid-area: mut;
+  display: grid;
+  gap: inherit;
+  place-items: center;
+  grid-template: repeat(1, 1fr) / repeat(3, 1fr);
+}
+
 .calculator__numpad {
-  background: coral;
+  --bg: var(--accent-numpad);
   grid-area: numpad;
   display: grid;
+  gap: inherit;
   place-items: center;
-  gap: var(--gap);
-  grid-template: repeat(4, min-content) / repeat(3, 1fr);
+  grid-template: repeat(4, 1fr) / repeat(3, 1fr);
 }
 
 .calculator__operators {
-  background: orange;
+  --bg: var(--accent-operator);
   grid-area: operators;
   display: grid;
+  gap: inherit;
   place-items: center;
-  gap: var(--gap);
-  grid-template: repeat(4, min-content) / repeat(2, 1fr);
+  grid-template: repeat(5, 1fr) / repeat(1, 1fr);
 }
 
 .calculator__item {
-  aspect-ratio: 1/1;
-  width: 90%;
+  background: var(--bg);
+  width: 100%;
+  height: 100%;
   border-radius: 25rem;
+  color: var(--text);
 }
 
 .calculator__item-double {
-  aspect-ratio: 2/1;
   grid-column: span 2;
 }
 
 .calculator__item:hover {
   transform: scale(1.1);
   filter: brightness(115%);
+  cursor: pointer;
 }
