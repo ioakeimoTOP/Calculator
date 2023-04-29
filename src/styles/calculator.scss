@@ -79,10 +79,12 @@
       grid-column: span 2;
     }
 
-    &:hover {
-      transform: scale(1.1);
-      filter: brightness(115%);
-      cursor: pointer;
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.05);
+        filter: brightness(115%);
+        cursor: pointer;
+      }
     }
   }
 }

@@ -311,8 +311,10 @@ footer {
   grid-column: span 2;
 }
 
-.calculator__item:hover {
-  transform: scale(1.1);
-  filter: brightness(115%);
-  cursor: pointer;
+@media (hover: hover) {
+  .calculator__item:hover {
+    transform: scale(1.05);
+    filter: brightness(115%);
+    cursor: pointer;
+  }
 }
