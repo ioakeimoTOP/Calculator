@@ -11,10 +11,14 @@ const numpad = document.querySelector('.calculator__numpad');
 numpad.addEventListener('click', (event) => {
   const target = event.target;
   if (target.classList.contains('calculator__item')) {
-    if (target?.dataset.operation === '.') {
-      calculator.inputDot();
-    } else {
-      calculator.inputNumber(target.textContent);
-    }
+    calculator.inputNumber(target.textContent);
+  }
+});
+
+const mutators = document.querySelector('.calculator__mutators');
+mutators.addEventListener('click', (event) => {
+  const target = event.target;
+  if (target.classList.contains('calculator__item')) {
+    calculator.mutate(target.dataset.mutation);
   }
 });

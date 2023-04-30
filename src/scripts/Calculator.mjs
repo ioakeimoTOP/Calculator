@@ -29,4 +29,20 @@ export default class Calculator extends Observable {
     }
     this._dispatchStateChange();
   }
+
+  mutate(mutator) {
+    switch (mutator) {
+      case 'clear':
+        this.#state.history.push(Number(this.#state.current));
+        this.#state.current = '0';
+        break;
+      case 'del':
+        this.#state.current = this.#state.current.slice(0, -1);
+        break;
+      case 'undo':
+        this.#state.current = this.#state.history.pop()?.toString() || '0';
+        break;
+    }
+    this._dispatchStateChange();
+  }
 }
