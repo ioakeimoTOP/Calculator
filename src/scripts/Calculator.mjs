@@ -36,14 +36,13 @@ export default class Calculator extends Observable {
   }
 
   inputNumber(number) {
-    if (number === '.') {
-      if (this.#state.current.includes('.')) {
-        return; // If there is already a . in the number an other should not be added
-      }
-      this.#state.current += number;
-    } else if (this.#state.initiateInputOverwrite) {
+    if (number === '.' && this.#state.current.includes('.')) {
+      return; // If there is already a . in the number an other should not be added
+    }
+
+    if (this.#state.initiateInputOverwrite) {
       this.#state.initiateInputOverwrite = false;
-      this.#state.current = number;
+      this.#state.current = number === '.' ? '0.' : number;
     } else {
       this.#state.current += number;
     }
