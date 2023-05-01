@@ -5,7 +5,7 @@ const currentState = screen.querySelector('.calculator__state');
 const pendingState = screen.querySelector('.calculator__state-pending');
 
 function updateScreen(newScreenState) {
-  currentState.textContent = newScreenState.current;
+  currentState.textContent = newScreenState.current || '0';
   pendingState.textContent = `${newScreenState.previous || '0'} ${
     newScreenState.pending || ''
   }`;

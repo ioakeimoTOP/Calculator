@@ -27,7 +27,7 @@ export default class Calculator extends Observable {
   }
 
   _pushState(newState = '0') {
-    this.#state.history.push(this.#state.current);
+    this.#state.history.push(this.#state.current || '0');
     this.#state.current = newState;
   }
 
