@@ -34,3 +34,32 @@ operators.addEventListener('click', (event) => {
     calculator.operate(target.dataset.operation);
   }
 });
+
+// Handle Keyboard generated input
+const numberKeys = new Set('.0123456789'.split(''));
+const operatorKeys = new Set('+-*/='.split(''));
+window.addEventListener('keydown', (event) => {
+  const keyPressed = event.key;
+  if (numberKeys.has(keyPressed)) {
+    calculator.inputNumber(keyPressed);
+  } else if (operatorKeys.has(keyPressed)) {
+    calculator.operate(keyPressed);
+  } else {
+    switch (
+      keyPressed // Special cases
+    ) {
+      case 'Enter':
+        calculator.operate('=');
+        break;
+      case 'Backspace':
+        calculator.mutate('del');
+        break;
+      case 'z':
+      case 'Z':
+        if (event.ctrlKey) {
+          calculator.mutate('undo');
+        }
+        break;
+    }
+  }
+});
