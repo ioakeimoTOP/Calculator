@@ -26,12 +26,12 @@ export default class Calculator extends Observable {
     };
   }
 
-  _pushState(newState = '0') {
+  #pushState(newState = '0') {
     this.#state.history.push(this.#state.current || '0');
     this.#state.current = newState;
   }
 
-  _clearState() {
+  #clearState() {
     this.#state.current = 0;
     this.#state.pendingOperation = null;
     this.#state.history = [];
@@ -56,7 +56,7 @@ export default class Calculator extends Observable {
   mutate(mutator) {
     switch (mutator) {
       case 'clear':
-        this._clearState();
+        this.#clearState();
         break;
       case 'del':
         this.#state.current = this.#state.current.slice(0, -1);
@@ -80,10 +80,10 @@ export default class Calculator extends Observable {
 
     if (operator !== '=') {
       this.#state.pendingOperation = operator;
-      this._pushState();
+      this.#pushState();
     } else {
       this.#state.pendingOperation = null;
-      this._pushState(this.#state.current);
+      this.#pushState(this.#state.current);
     }
 
     this._dispatchStateChange();
