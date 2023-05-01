@@ -247,6 +247,7 @@ footer {
   gap: var(--gap);
   grid-template-areas:
     'screen screen screen screen'
+    'screen screen screen screen'
     'mut    mut    mut    operators'
     'numpad numpad numpad operators'
     'numpad numpad numpad operators'
@@ -261,15 +262,20 @@ footer {
 }
 
 .calculator__screen {
-  font-size: 2em;
   color: var(--text-inverse);
   background: var(--accent-screen);
-  padding: 0.25em;
+  font-size: 2em;
+  padding: 0.5em;
 
   grid-area: screen;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+.calculator__screen > .calculator__state-pending {
+  font-size: 0.5em;
 }
 
 .calculator__mutators {
