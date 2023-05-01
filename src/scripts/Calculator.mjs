@@ -18,9 +18,8 @@ export default class Calculator extends Observable {
   _getState() {
     return {
       current: this.#state.current,
-      pending: `${this.#state.history.at(-1) || '0'} ${
-        this.#state.pendingOperation || ''
-      }`,
+      previous: this.#state.history.at(-1),
+      pending: this.#state.pendingOperation,
     };
   }
 

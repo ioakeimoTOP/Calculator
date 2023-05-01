@@ -6,7 +6,9 @@ const pendingState = screen.querySelector('.calculator__state-pending');
 
 function updateScreen(newScreenState) {
   currentState.textContent = newScreenState.current;
-  pendingState.textContent = newScreenState.pending;
+  pendingState.textContent = `${newScreenState.previous || '0'} ${
+    newScreenState.pending || ''
+  }`;
 }
 const calculator = new Calculator();
 calculator.subscribe(updateScreen);
