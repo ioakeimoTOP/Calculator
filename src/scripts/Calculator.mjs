@@ -32,6 +32,7 @@ export default class Calculator extends Observable {
   _clearState() {
     this.#state.current = 0;
     this.#state.pendingOperation = null;
+    this.#state.history = [];
     this.#state.initiateInputOverwrite = true;
   }
 
