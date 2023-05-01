@@ -39,7 +39,7 @@ operators.addEventListener('click', (event) => {
 
 // Handle Keyboard generated input
 const numberKeys = new Set('.0123456789'.split(''));
-const operatorKeys = new Set('+-*/='.split(''));
+const operatorKeys = new Set('+-*='.split(''));
 window.addEventListener('keydown', (event) => {
   const keyPressed = event.key;
   if (numberKeys.has(keyPressed)) {
@@ -50,11 +50,23 @@ window.addEventListener('keydown', (event) => {
     switch (
       keyPressed // Special cases
     ) {
+      case '/': // Special case: Firefox: Quick Find shortcut
+        event.preventDefault();
+        calculator.operate(keyPressed);
+        break;
       case 'Enter':
         calculator.operate('=');
         break;
       case 'Backspace':
         calculator.mutate('del');
+        break;
+      case 'c':
+      case 'C':
+        if (!event.ctrlKey) {
+          console.log('wtf');
+          // Do not mutate if user is trying to Ctrl+c (copy)
+          calculator.mutate('clear');
+        }
         break;
       case 'z':
       case 'Z':
