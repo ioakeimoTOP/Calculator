@@ -6,19 +6,19 @@ const operatorMap = {
 };
 
 function _add(num1, num2) {
-  return (Number(num1) + Number(num2)).toString();
+  return Number(num1) + Number(num2);
 }
 
 function _subtract(num1, num2) {
-  return (Number(num1) - Number(num2)).toString();
+  return Number(num1) - Number(num2);
 }
 
 function _multiply(num1, num2) {
-  return (Number(num1) * Number(num2)).toString();
+  return Number(num1) * Number(num2);
 }
 
 function _divide(num1, num2) {
-  return (Number(num1) / Number(num2)).toString();
+  return Number(num1) / Number(num2);
 }
 
 function operate(operator, operand1, operand2, decimalPrecision) {
@@ -27,7 +27,7 @@ function operate(operator, operand1, operand2, decimalPrecision) {
     const precisionFactor = 10 ** decimalPrecision;
     result = Math.round(result * precisionFactor) / precisionFactor;
   }
-  return result;
+  return result.toString();
 }
 
 export { operate };
