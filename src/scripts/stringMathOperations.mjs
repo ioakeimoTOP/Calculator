@@ -21,8 +21,13 @@ function _divide(num1, num2) {
   return (Number(num1) / Number(num2)).toString();
 }
 
-function operate(operator, operand1, operand2) {
-  return operatorMap[operator](operand1, operand2);
+function operate(operator, operand1, operand2, decimalPrecision) {
+  let result = operatorMap[operator](operand1, operand2);
+  if (decimalPrecision) {
+    const precisionFactor = 10 ** decimalPrecision;
+    result = Math.round(result * precisionFactor) / precisionFactor;
+  }
+  return result;
 }
 
 export { operate };

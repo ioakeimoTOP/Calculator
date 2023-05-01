@@ -10,7 +10,7 @@ function updateScreen(newScreenState) {
     newScreenState.pending || ''
   }`;
 }
-const calculator = new Calculator();
+const calculator = new Calculator(5);
 calculator.subscribe(updateScreen);
 
 const numpad = document.querySelector('.calculator__numpad');

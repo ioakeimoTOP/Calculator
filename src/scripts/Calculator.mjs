@@ -4,6 +4,8 @@ import * as mathOperations from './stringMathOperations.mjs';
 ('use strict');
 
 export default class Calculator extends Observable {
+  #PRECISION;
+
   #state = {
     current: '0',
     initiateInputOverwrite: true,
@@ -11,8 +13,9 @@ export default class Calculator extends Observable {
     history: [],
   };
 
-  constructor(...observerFunctions) {
+  constructor(precision = 5, ...observerFunctions) {
     super(...observerFunctions);
+    this.#PRECISION = precision;
   }
 
   _getState() {
@@ -70,7 +73,8 @@ export default class Calculator extends Observable {
       this.#state.current = mathOperations.operate(
         this.#state.pendingOperation,
         this.#state.history.at(-1),
-        this.#state.current
+        this.#state.current,
+        this.#PRECISION
       );
     }
 
